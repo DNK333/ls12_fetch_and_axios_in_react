@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import './App.css'
+import CatGallery from './CatGallery'
 
 const PAGE_SIZE = 10
 const POSTS_URL = 'https://dummyjson.com/posts'
@@ -35,7 +36,7 @@ async function fetchPosts(skip: number, signal?: AbortSignal) {
   return (await response.json()) as PostsResponse
 }
 
-function App() {
+function NewsFeed() {
   const today = new Intl.DateTimeFormat('ru-RU', {
     weekday: 'long',
     day: 'numeric',
@@ -116,22 +117,7 @@ function App() {
   }
 
   return (
-    <div className="site-shell">
-      <header className="topbar">
-        <a className="wordmark" href="#" aria-label="Лента — на главную">
-          <span className="wordmark-icon" aria-hidden="true">
-            л.
-          </span>
-          <span>лента</span>
-        </a>
-        <div className="topbar-note">
-          <span className="live-dot" />
-          коротко о важном
-        </div>
-        <div className="topbar-date">ВАША ЕЖЕДНЕВНАЯ ПОДБОРКА</div>
-      </header>
-
-      <main className="page-content">
+    <main className="page-content">
         <section className="intro" aria-labelledby="page-title">
           <div className="intro-copy">
             <p className="eyebrow">{today}</p>
@@ -285,7 +271,64 @@ function App() {
           <span>ЛЕНТА — МЕСТО ДЛЯ ХОРОШИХ МЫСЛЕЙ</span>
           <span>СДЕЛАНО С ЛЮБОПЫТСТВОМ <span aria-hidden="true">✳</span></span>
         </footer>
-      </main>
+    </main>
+  )
+}
+
+type HomeworkPage = 'feed' | 'cats'
+
+function App() {
+  const [page, setPage] = useState<HomeworkPage>('feed')
+  const [hasOpenedCats, setHasOpenedCats] = useState(false)
+
+  return (
+    <div className="site-shell">
+      <header className="topbar">
+        <a
+          className="wordmark"
+          href="#"
+          aria-label="Практика React — на главную"
+          onClick={(event) => {
+            event.preventDefault()
+            setPage('feed')
+          }}
+        >
+          <span className="wordmark-icon" aria-hidden="true">
+            r.
+          </span>
+          <span>react lab</span>
+        </a>
+        <nav className="homework-nav" aria-label="Учебные задания">
+          <button
+            className={`homework-nav-button${page === 'feed' ? ' is-active' : ''}`}
+            type="button"
+            aria-current={page === 'feed' ? 'page' : undefined}
+            onClick={() => setPage('feed')}
+          >
+            Лента
+          </button>
+          <button
+            className={`homework-nav-button${page === 'cats' ? ' is-active' : ''}`}
+            type="button"
+            aria-current={page === 'cats' ? 'page' : undefined}
+            onClick={() => {
+              setHasOpenedCats(true)
+              setPage('cats')
+            }}
+          >
+            Random Cat
+          </button>
+        </nav>
+        <div className="topbar-date">ПРАКТИКА РАБОТЫ С API</div>
+      </header>
+      <div hidden={page !== 'feed'}>
+        <NewsFeed />
+      </div>
+      {hasOpenedCats && (
+        <div hidden={page !== 'cats'}>
+          <CatGallery />
+        </div>
+      )}
     </div>
   )
 }

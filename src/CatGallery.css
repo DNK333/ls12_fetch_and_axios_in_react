@@ -1,0 +1,265 @@
+.cat-page {
+  padding-top: 48px;
+}
+
+.cat-intro {
+  padding: 0 0 28px;
+  text-align: center;
+}
+
+.cat-intro h1 {
+  margin: 10px 0 8px;
+  font-size: clamp(44px, 7vw, 68px);
+  font-weight: 600;
+  letter-spacing: -4px;
+  line-height: 1.1;
+}
+
+.cat-intro h1 span {
+  color: #bc5437;
+}
+
+.cat-intro > p:last-child {
+  margin: 0;
+  color: #77796e;
+  font-size: 13px;
+}
+
+.cat-stage {
+  width: min(100%, 700px);
+  margin: 0 auto;
+  padding: 18px;
+  border: 1px solid #e6e4da;
+  border-radius: 6px;
+  background: #fbfaf6;
+}
+
+.cat-image-frame {
+  min-height: 300px;
+  height: min(54vh, 480px);
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 4px;
+  background:
+    radial-gradient(ellipse at 30% 25%, rgba(255, 255, 255, 0.85), transparent 35%),
+    #e9e9df;
+}
+
+.cat-image-frame.is-loading {
+  background-color: #e9e9df;
+}
+
+.cat-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cat-loading,
+.cat-placeholder {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  color: #77796e;
+  font-size: 13px;
+}
+
+.cat-placeholder {
+  font-size: 60px;
+}
+
+.cat-error {
+  padding: 12px 4px 0;
+  color: #a9472d;
+  font-size: 12px;
+  text-align: center;
+}
+
+.cat-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 18px 0 2px;
+}
+
+.cat-new-button {
+  min-width: 170px;
+  min-height: 46px;
+}
+
+.favorite-button {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 0 16px;
+  border: 1px solid #e0ded4;
+  border-radius: 4px;
+  color: #5d5f55;
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: border-color 150ms ease, color 150ms ease, background 150ms ease;
+}
+
+.favorite-button > span {
+  color: #bc5437;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.favorite-button:hover:not(:disabled),
+.favorite-button.is-favorite {
+  border-color: #d4a290;
+  color: #a9472d;
+  background: #f8eee9;
+}
+
+.favorite-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.favorites-section {
+  width: min(100%, 900px);
+  margin: 50px auto 0;
+}
+
+.favorites-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e7e5dc;
+}
+
+.favorites-heading h2 {
+  margin: 7px 0 0;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.7px;
+}
+
+.favorites-count {
+  color: #bc5437;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+}
+
+.favorites-empty {
+  padding: 26px 0;
+  color: #898b80;
+  font-size: 12px;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 14px;
+  padding-top: 17px;
+}
+
+.favorite-card {
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e6e4da;
+  border-radius: 4px;
+  background: #e9e9df;
+}
+
+.favorite-image-button {
+  width: 100%;
+  height: 100%;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.favorite-image-button img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 180ms ease;
+}
+
+.favorite-image-button:hover img {
+  transform: scale(1.04);
+}
+
+.remove-favorite {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  color: #a9472d;
+  background: rgba(251, 250, 246, 0.92);
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.remove-favorite:hover {
+  color: #fff;
+  background: #bc5437;
+}
+
+@media (max-width: 700px) {
+  .cat-page {
+    padding-top: 35px;
+  }
+
+  .cat-intro {
+    padding-bottom: 22px;
+  }
+
+  .cat-intro h1 {
+    letter-spacing: -3px;
+  }
+
+  .cat-stage {
+    padding: 10px;
+  }
+
+  .cat-image-frame {
+    min-height: 240px;
+    height: 42vh;
+  }
+
+  .cat-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cat-actions button {
+    width: 100%;
+  }
+
+  .favorites-section {
+    margin-top: 38px;
+  }
+
+  .favorites-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .favorite-card {
+    height: 135px;
+  }
+}

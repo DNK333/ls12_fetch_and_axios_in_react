@@ -71,6 +71,38 @@
   letter-spacing: 0.9px;
 }
 
+.homework-nav {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px;
+  border: 1px solid #e7e5dc;
+  border-radius: 5px;
+  background: #fbfaf6;
+}
+
+.homework-nav-button {
+  min-height: 32px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 3px;
+  color: #77796e;
+  background: transparent;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  transition: color 150ms ease, background 150ms ease;
+}
+
+.homework-nav-button:hover {
+  color: #25271f;
+}
+
+.homework-nav-button.is-active {
+  color: #fff;
+  background: #25271f;
+}
+
 .page-content {
   width: min(100% - 48px, 1060px);
   margin: 0 auto;
@@ -569,6 +601,31 @@
 
   .topbar-date {
     display: none;
+  }
+
+  .topbar {
+    gap: 10px;
+    padding: 0 14px;
+  }
+
+  .wordmark {
+    gap: 7px;
+    font-size: 18px;
+  }
+
+  .wordmark-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .homework-nav {
+    gap: 2px;
+  }
+
+  .homework-nav-button {
+    min-height: 30px;
+    padding: 0 8px;
+    font-size: 10px;
   }
 
   .page-content {
